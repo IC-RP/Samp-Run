@@ -17,6 +17,6 @@ sleep 5
 echo "🌐 playit.gg agent started. Connect using the tunnel address above!"
 
 # 🛠️ Start SA‑MP server
-cd samp
-chmod +x samp-server
-./samp-server
+cd server
+chmod +x samp03svr
+./samp03svr
