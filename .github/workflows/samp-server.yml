@@ -25,10 +25,18 @@ jobs:
       - name: Start SA-MP server
         run: |
           chmod +x start.sh
-          ./start.sh &
 
-          # Let the server run full duration
-          sleep 330m
+          ./start.sh
+
+      - name: Save server files and push to repo
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "actions@github.com"
+          git add server/* || true
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-save server files at $(date)"
+            git push
+          fi
 
       - name: Trigger next run
         run: |
