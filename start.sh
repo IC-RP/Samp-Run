@@ -10,8 +10,7 @@ chmod +x playit
 
 
 
-# ▶️ Show Playit tunnel address ONCE in GitHub Actions logs
-./playit --print-tunnel
+echo "🌐 playit.gg agent started. Connect using the tunnel address above!"
 
 # ▶️ Launch playit.gg in background to establish UDP tunnel, suppress output
 nohup ./playit &> ../playit.log &
@@ -19,7 +18,9 @@ nohup ./playit &> ../playit.log &
 # 🕒 Wait a few seconds for tunnel to initialize
 sleep 5
 
-echo "🌐 playit.gg agent started. Connect using the tunnel address above!"
+# ▶️ Show Playit tunnel address ONCE in GitHub Actions logs
+echo "🌐 playit.gg agent started. Tunnel info below:"
+head -20 ../playit.log
 
 
 
