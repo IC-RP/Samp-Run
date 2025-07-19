@@ -39,8 +39,9 @@ if ! mkfifo $PIPE; then
   echo "[ERROR] Failed to create named pipe $PIPE! Exiting."
   exit 1
 fi
-echo "[INFO] Starting SA-MP server..."
-setsid ./samp03svr < $PIPE &
+
+echo "[INFO] Starting SA-MP server with PTY for pipe input..."
+script -q -c "./samp03svr" /dev/null < $PIPE &
 SAMP_PID=$!
 sleep 2
 if ! ps -p $SAMP_PID > /dev/null; then
